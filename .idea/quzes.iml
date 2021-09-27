@@ -24,6 +24,7 @@
     <option name="TEMPLATE_FOLDERS">
       <list>
         <option value="$MODULE_DIR$/quzes/templates" />
+        <option value="$MODULE_DIR$/quzes/users/templates" />
       </list>
     </option>
   </component>

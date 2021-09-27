@@ -7,10 +7,12 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 from quzes.frontend import urls as frontend_urls
 from quzes.users import urls as users_urls
+
 urlpatterns = [
                   path(settings.ADMIN_URL, admin.site.urls),
                   path('', include(frontend_urls, namespace='frontend')),
-                  path('', include(users_urls)),
+                  path('', include(users_urls, namespace='users')),
+                  path('accounts/', include('allauth.urls')),
                   # Your stuff: custom urls includes go here
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

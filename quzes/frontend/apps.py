@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class FrontendConfig(AppConfig):
-    name = 'frontend'
+    name = 'quzes.frontend'
 
     def ready(self):
         try:

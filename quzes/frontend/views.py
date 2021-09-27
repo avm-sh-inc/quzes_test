@@ -7,6 +7,7 @@ from django.views.generic import TemplateView
 
 class Home(TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, 'pages/home.html')
+        context = {}
+        return render(request, 'pages/home.html', context)
 
 

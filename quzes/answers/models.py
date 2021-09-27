@@ -2,17 +2,16 @@ from uuid import uuid4
 
 from django.db import models
 
-# Create your models here.
-
 
 class Answers(models.Model):
     uid = models.UUIDField(primary_key=True, editable=False, default=uuid4)
-    quiz = models.ForeignKey('quiz.Quize', on_delete=models.SET_NULL, blank=False, null=True)
+    quiz = models.ForeignKey('quiz.Quiz', on_delete=models.SET_NULL, blank=False, null=True)
     question = models.ForeignKey('questions.Question', on_delete=models.PROTECT, blank=False, null=False)
+    interviewee = models.ForeignKey('users.User', on_delete=models.PROTECT, blank=False, null=False)
     value = models.CharField(max_length=100)
 
     class Meta:
-        db_tables = 'answers'
+        db_table = 'answers'
         ordering = ['quiz']
         indexes = [
             models.Index(fields=['quiz'], name='quiz_idx'),

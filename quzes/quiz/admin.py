@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from quzes.quiz.models import Quize
+from quzes.quiz.models import Quiz
 
 
-@admin.register(Quize)
-class QuizeAdmin(admin.ModelAdmin):
+@admin.register(Quiz)
+class QuizAdmin(admin.ModelAdmin):
     pass

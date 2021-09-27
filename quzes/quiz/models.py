@@ -6,7 +6,7 @@ from django.db import models
 from quzes.questions.models import Question
 
 
-class Quize(models.Model):
+class Quiz(models.Model):
     uid = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     title = models.CharField(max_length=120)
     pic_title = models.FileField()
@@ -16,6 +16,5 @@ class Quize(models.Model):
     questions = models.ManyToManyField(Question)
     rules = JSONField()
 
-
     class Meta:
-        db_table = 'quize'
+        db_table = 'Quiz'
