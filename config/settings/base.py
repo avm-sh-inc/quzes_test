@@ -40,7 +40,7 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
-DATABASES = {"default": env.db("DATABASE_URL")}
+DATABASES = {"default": env.db("DATABASE_URL", 'postgres://localhost:5432/quzes')}
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -76,6 +76,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "quzes.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "quzes.frontend.apps.FrontendConfig",
+    "quzes.quiz",
+    "quzes.questions",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -134,6 +137,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "quzes.utils.middleware.RequestMetaDataMiddleware"
 ]
 
 # STATIC
